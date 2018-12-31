@@ -64,13 +64,9 @@ func Main() {
 	var buf bytes.Buffer
 	printer.Fprint(&buf, fset, node)
 
-	fmt.Fprintln(&buf, "\n")
-
 	fmt.Fprintln(&buf, "//CODE AUTO GENERATED")
 
 	fmt.Fprintln(&buf, "func main(){")
-
-	fmt.Fprintln(&buf, "\n")
 
 	vmode := "false"
 	if *silent {
@@ -92,7 +88,6 @@ func Main() {
 
 	fmt.Fprintln(&buf, "	}")
 	fmt.Fprintln(&buf, "	goTaskScript.CallFunctions(taskFunctions,"+vmode+","+cOnError+")")
-	fmt.Fprintln(&buf, "\n")
 
 	s := buf.String()
 
