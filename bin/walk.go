@@ -9,6 +9,12 @@ import (
 	"strings"
 )
 
+type FuncVisitor struct {
+}
+
+/*
+ast Walk Visit for node
+*/
 func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 
 	switch t := node.(type) {
