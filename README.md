@@ -27,7 +27,7 @@ go-task -f file.go
 
 ###### Parameters
 
-```bash
+```
     -f      File
     -silent Silent mode
     -k      Keep generated file
