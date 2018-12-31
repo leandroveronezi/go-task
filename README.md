@@ -9,7 +9,7 @@ Golang Task Runner
 
 Run all exported functions in golang script
 
-## Install
+## Install `golang install`
 
 ```bash
 go install github.com/leandroveronezi/go-task
@@ -17,7 +17,7 @@ go install github.com/leandroveronezi/go-task
 
 ## Examples
 
-### File example5.go
+###### File example5.go
 
 ```go
 package example
@@ -78,13 +78,13 @@ func taskI() {
 }
 ```
 
-### Run
+###### Run
 
 ```bash
 go-task -f example5.go -c -s
 ```
 
-### Terminal
+###### Terminal
 
 ![](https://leandroveronezi.github.io/go-task/example/img/example5.png)
 

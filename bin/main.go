@@ -19,12 +19,10 @@ import (
 func Main() {
 
 	flagFile := flag.String("f", "", "File")
-	silent := flag.Bool("silent", false, "Verbose mode")
-
-	viewGenSource := flag.Bool("w", false, "Show generated source")
+	silent := flag.Bool("silent", false, "Silent mode")
 	keepFile := flag.Bool("k", false, "Keep generated file")
+	viewGenSource := flag.Bool("w", false, "View generated source")
 	sortFunctions := flag.Bool("s", false, "Sort orders of functions by name")
-
 	continueOnErrors := flag.Bool("c", false, "Continue on errors")
 	targetFunc := flag.String("t", "", "Target functions")
 
@@ -93,12 +91,8 @@ func Main() {
 	}
 
 	fmt.Fprintln(&buf, "	}")
-	fmt.Fprintln(&buf, "\n")
-
 	fmt.Fprintln(&buf, "	goTaskScript.CallFunctions(taskFunctions,"+vmode+","+cOnError+")")
 	fmt.Fprintln(&buf, "\n")
-
-	fmt.Fprintln(&buf, "}")
 
 	s := buf.String()
 
