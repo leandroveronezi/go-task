@@ -95,4 +95,4 @@ go-task -f example5.go -c -s
 go-task -f example5.go -c -s -t TaskH,TaskL
 ```
 
-![](https://leandroveronezi.github.io/go-task/example/img/example5_1.png)
+![](https://leandroveronezi.github.io/go-task/example/img/example5_2.png)
