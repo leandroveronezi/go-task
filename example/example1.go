@@ -4,9 +4,7 @@ import (
 	"time"
 )
 
-/*
-TaskC - Function example
-*/
+// TaskC - Function example
 func TaskC() bool {
 
 	time.Sleep(1 * time.Second)
@@ -15,9 +13,7 @@ func TaskC() bool {
 
 }
 
-/*
-TaskB - Function example
-*/
+// TaskB - Function example
 func TaskB() error {
 
 	time.Sleep(1 * time.Second)
@@ -26,9 +22,7 @@ func TaskB() error {
 
 }
 
-/*
-TaskA - Function example
-*/
+// TaskA - Function example
 func TaskA() {
 
 	time.Sleep(1 * time.Second)

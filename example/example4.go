@@ -4,18 +4,14 @@ import (
 	"time"
 )
 
-/*
-TaskF - Function example
-*/
+// TaskF - Function example
 func TaskF() {
 
 	taskG()
 
 }
 
-/*
-TaskG - Function example
-*/
+// TaskG - Function example
 func taskG() {
 
 	time.Sleep(1 * time.Second)

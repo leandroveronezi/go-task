@@ -5,9 +5,7 @@ import (
 	"time"
 )
 
-/*
-TaskE - Function example
-*/
+// TaskE - Function example
 func TaskE() error {
 
 	time.Sleep(1 * time.Second)

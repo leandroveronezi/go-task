@@ -9,9 +9,7 @@ import (
 	"time"
 )
 
-/*
-Task function representation
-*/
+// Task function representation
 type TaskFunction struct {
 	Fun  interface{}
 	Name string
@@ -19,9 +17,7 @@ type TaskFunction struct {
 
 var startGeral time.Time
 
-/*
-Call Task Functions
-*/
+// Call Task Functions
 func CallFunctions(functions map[int]TaskFunction, silent bool, continueOnErrors bool) {
 
 	goTerminal.Clean()

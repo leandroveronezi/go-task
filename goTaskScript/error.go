@@ -7,18 +7,14 @@ import (
 	"strings"
 )
 
-/*
-Task Return representation
-*/
+// Task Return representation
 type GoTaskReturn struct {
 	Err  error
 	Line int
 	File string
 }
 
-/*
-Process error return
-*/
+// Process error return
 func ProcessReturn(Err error) *GoTaskReturn {
 
 	filename, fileline := fileLine(2)
@@ -33,9 +29,7 @@ func ProcessReturn(Err error) *GoTaskReturn {
 
 }
 
-/*
-Process boolean return
-*/
+// Process boolean return
 func ProcessBool(Result bool) *GoTaskReturn {
 
 	filename, fileline := fileLine(2)

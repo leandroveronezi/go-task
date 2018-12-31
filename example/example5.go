@@ -5,9 +5,7 @@ import (
 	"time"
 )
 
-/*
-TaskN - Function example
-*/
+// TaskN - Function example
 func TaskN() error {
 
 	time.Sleep(1 * time.Second)
@@ -16,9 +14,7 @@ func TaskN() error {
 
 }
 
-/*
-TaskM - Function example
-*/
+// TaskM - Function example
 func TaskM() bool {
 
 	time.Sleep(1 * time.Second)
@@ -27,9 +23,7 @@ func TaskM() bool {
 
 }
 
-/*
-TaskL - Function example
-*/
+// TaskL - Function example
 func TaskL() bool {
 
 	time.Sleep(1 * time.Second)
@@ -38,9 +32,7 @@ func TaskL() bool {
 
 }
 
-/*
-TaskK - Function example
-*/
+// TaskK - Function example
 func TaskK() error {
 
 	time.Sleep(1 * time.Second)
@@ -49,27 +41,21 @@ func TaskK() error {
 
 }
 
-/*
-TaskJ - Function example
-*/
+// TaskJ - Function example
 func TaskJ() {
 
 	time.Sleep(1 * time.Second)
 
 }
 
-/*
-TaskH - Function example
-*/
+// TaskH - Function example
 func TaskH() {
 
 	taskI()
 
 }
 
-/*
-TaskI - Function example
-*/
+// TaskI - Function example
 func taskI() {
 
 	time.Sleep(1 * time.Second)
