@@ -49,7 +49,7 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 					if fn.Type.Params != nil {
 
 						if len(fn.Type.Params.List) > 0 {
-							fmt.Println("Params not alowed in exported functions")
+							fmt.Println("Params not allowed in exported functions")
 							os.Exit(1)
 						}
 

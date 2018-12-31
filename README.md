@@ -40,7 +40,10 @@ go-task -f file.go
 ###### Simple File
 
 > An import between parenthesis is required.
+
 > Run only Exported functions.
+
+> No main function allowed
 
 ```go
 package example
