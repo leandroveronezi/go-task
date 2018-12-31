@@ -88,3 +88,11 @@ go-task -f example5.go -c -s
 
 ![](https://leandroveronezi.github.io/go-task/example/img/example5.png)
 
+
+###### Run Functions by name
+
+```bash
+go-task -f example5.go -c -s -t TaskH,TaskL
+```
+
+![](https://leandroveronezi.github.io/go-task/example/img/example5_1.png)
