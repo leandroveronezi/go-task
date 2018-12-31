@@ -23,9 +23,6 @@ func CallFunctions(functions map[int]RepFunctions, silent bool, continueOnErrors
 
 	printScrenBegin(silent)
 
-	strTotTask := strconv.Itoa(len(functions))
-	strTotTask = strings.Repeat("0", 4-len(strTotTask)) + strTotTask
-
 	for i := 0; i < len(functions); i++ {
 
 		printTaskTitle(silent, functions, i)

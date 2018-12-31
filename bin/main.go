@@ -91,6 +91,7 @@ func Main() {
 
 	fmt.Fprintln(&buf, "	}")
 	fmt.Fprintln(&buf, "	goTaskScript.CallFunctions(taskFunctions,"+vmode+","+cOnError+")")
+	fmt.Fprintln(&buf, "}")
 
 	s := buf.String()
 
