@@ -5,11 +5,15 @@
 ![MIT Licensed](https://img.shields.io/github/license/leandroveronezi/go-task.svg)
 ![](https://img.shields.io/github/repo-size/leandroveronezi/go-task.svg)
 
-Golang Task Runner
+Golang Task Runner is a very simple library that allows you to write simple "task" scripts in Go and run.
 
-Run all exported functions in golang script
+##First, we need $GOPATH/bin
 
-## Install `golang install`
+```bash
+export PATH=$PATH:$GOPATH/bin
+```
+
+## Install 
 
 ```bash
 go install github.com/leandroveronezi/go-task
