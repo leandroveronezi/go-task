@@ -7,7 +7,7 @@
 
 Golang Task Runner is a very simple library that allows you to write simple "task" scripts in Go and run.
 
-##First, we need $GOPATH/bin
+## First, we need $GOPATH/bin
 
 ```bash
 export PATH=$PATH:$GOPATH/bin
