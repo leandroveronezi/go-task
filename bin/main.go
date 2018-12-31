@@ -22,8 +22,8 @@ func Main() {
 	silent := flag.Bool("silent", false, "Silent mode")
 	keepFile := flag.Bool("k", false, "Keep generated file")
 	viewGenSource := flag.Bool("w", false, "View generated source")
-	sortFunctions := flag.Bool("s", false, "Sort orders of functions by name")
-	continueOnErrors := flag.Bool("c", false, "Continue on errors")
+	sortFunctions := flag.Bool("s", false, "Sort orders of functions by name before run")
+	continueOnErrors := flag.Bool("c", false, "Skip errors and continue")
 	targetFunc := flag.String("t", "", "Target functions")
 
 	flag.Parse()

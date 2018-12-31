@@ -19,6 +19,45 @@ export PATH=$PATH:$GOPATH/bin
 go install github.com/leandroveronezi/go-task
 ```
 
+## Usage
+
+```bash
+go-task -f file.go
+```
+
+###### Parameters
+
+```bash
+    -f      File
+	-silent Silent mode
+	-k      Keep generated file
+	-w      View generated source
+	-s      Sort orders of functions by name before run
+	-c      Skip errors and continue
+	-t      Target functions
+```
+
+###### Simple File
+
+> An import between parenthesis is required.
+
+```go
+package example
+
+import (
+	"time"
+)
+
+func TaskA() {
+
+	time.Sleep(1 * time.Second)
+
+}
+```
+
+
+
+
 ## Examples
 
 ###### File example5.go
