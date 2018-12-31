@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-func D() bool {
+func TaskD() bool {
 
 	time.Sleep(1 * time.Second)
 

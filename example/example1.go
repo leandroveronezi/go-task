@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-func C() bool {
+func TaskC() bool {
 
 	time.Sleep(1 * time.Second)
 
@@ -12,7 +12,7 @@ func C() bool {
 
 }
 
-func B() error {
+func TaskB() error {
 
 	time.Sleep(1 * time.Second)
 
@@ -20,7 +20,7 @@ func B() error {
 
 }
 
-func A() {
+func TaskA() {
 
 	time.Sleep(1 * time.Second)
 

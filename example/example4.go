@@ -4,13 +4,13 @@ import (
 	"time"
 )
 
-func F() {
+func TaskF() {
 
-	g()
+	taskG()
 
 }
 
-func g() {
+func taskG() {
 
 	time.Sleep(1 * time.Second)
 

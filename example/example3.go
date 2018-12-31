@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func E() error {
+func TaskE() error {
 
 	time.Sleep(1 * time.Second)
 

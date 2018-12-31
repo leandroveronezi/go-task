@@ -32,12 +32,6 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 
 				if fn.Recv == nil && fn.Name.IsExported() {
 
-					//to-do
-					/*
-						if fn.Doc.Text() != "" {
-						}
-					*/
-
 					if len(targetFuncList) > 0 {
 
 						for _, v := range targetFuncList {
