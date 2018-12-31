@@ -81,7 +81,7 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 								tp = KBool
 							}
 
-							res.Name = "*goTaskScript.GoCallError"
+							res.Name = "*goTaskScript.GoTaskReturn"
 
 							checkFunctionReturn(tp, fn.Body.List...)
 

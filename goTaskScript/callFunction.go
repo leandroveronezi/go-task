@@ -5,7 +5,7 @@ import (
 	"reflect"
 )
 
-func callFunc(m map[int]RepFunctions, idx int, params ...interface{}) (result []reflect.Value, err error) {
+func callFunc(m map[int]TaskFunction, idx int, params ...interface{}) (result []reflect.Value, err error) {
 
 	f := reflect.ValueOf(m[idx].Fun)
 	if len(params) != f.Type().NumIn() {

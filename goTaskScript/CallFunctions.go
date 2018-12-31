@@ -9,14 +9,17 @@ import (
 	"time"
 )
 
-type RepFunctions struct {
+type TaskFunction struct {
 	Fun  interface{}
 	Name string
 }
 
 var startGeral time.Time
 
-func CallFunctions(functions map[int]RepFunctions, silent bool, continueOnErrors bool) {
+/*
+Call Task Functions
+*/
+func CallFunctions(functions map[int]TaskFunction, silent bool, continueOnErrors bool) {
 
 	goTerminal.Clean()
 	goTerminal.CursorLineColumn(1, 1)
@@ -94,7 +97,7 @@ func processCallFunction(Silent bool, CallResult []reflect.Value, CallErr error)
 
 	for _, value := range CallResult {
 
-		if foo, ok := value.Interface().(*GoCallError); ok {
+		if foo, ok := value.Interface().(*GoTaskReturn); ok {
 
 			status = "Success"
 
@@ -135,7 +138,7 @@ func printScrenBegin(Silent bool) {
 
 }
 
-func printTaskTitle(Silent bool, Functions map[int]RepFunctions, Idx int) {
+func printTaskTitle(Silent bool, Functions map[int]TaskFunction, Idx int) {
 
 	if Silent {
 		return

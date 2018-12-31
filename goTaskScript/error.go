@@ -7,17 +7,23 @@ import (
 	"strings"
 )
 
-type GoCallError struct {
+/*
+Task Return representation
+*/
+type GoTaskReturn struct {
 	Err  error
 	Line int
 	File string
 }
 
-func ProcessReturn(Err error) *GoCallError {
+/*
+Process error return
+*/
+func ProcessReturn(Err error) *GoTaskReturn {
 
-	filename, fileline := FileLine(2)
+	filename, fileline := fileLine(2)
 
-	result := GoCallError{}
+	result := GoTaskReturn{}
 
 	result.Err = Err
 	result.Line = fileline - 1
@@ -27,11 +33,14 @@ func ProcessReturn(Err error) *GoCallError {
 
 }
 
-func ProcessBool(Result bool) *GoCallError {
+/*
+Process boolean return
+*/
+func ProcessBool(Result bool) *GoTaskReturn {
 
-	filename, fileline := FileLine(2)
+	filename, fileline := fileLine(2)
 
-	result := GoCallError{}
+	result := GoTaskReturn{}
 
 	result.Err = nil
 	if !Result {
@@ -47,7 +56,7 @@ func ProcessBool(Result bool) *GoCallError {
 
 const packageName = "github.com/leandroveronezi/go-task/goTaskScript"
 
-func FileLine(depth int) (string, int) {
+func fileLine(depth int) (string, int) {
 
 	for i := depth; ; i++ {
 

@@ -81,11 +81,11 @@ func Main() {
 		cOnError = "true"
 	}
 
-	fmt.Fprintln(&buf, "	var taskFunctions = map[int]goTaskScript.RepFunctions{")
+	fmt.Fprintln(&buf, "	var taskFunctions = map[int]goTaskScript.TaskFunction{")
 
 	for idx, name := range taskFunctions {
 
-		fmt.Fprintln(&buf, "		"+strconv.Itoa(idx)+" : goTaskScript.RepFunctions{Name:"+strconv.Quote(name)+",Fun:"+name+"},")
+		fmt.Fprintln(&buf, "		"+strconv.Itoa(idx)+" : goTaskScript.TaskFunction{Name:"+strconv.Quote(name)+",Fun:"+name+"},")
 
 	}
 
