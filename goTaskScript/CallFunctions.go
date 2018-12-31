@@ -9,6 +9,9 @@ import (
 	"time"
 )
 
+/*
+Task function representation
+*/
 type TaskFunction struct {
 	Fun  interface{}
 	Name string
