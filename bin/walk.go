@@ -35,7 +35,30 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 
 				if fn.Recv == nil && fn.Name.IsExported() {
 
-					if len(targetFuncList) > 0 {
+					if *flagGroupFunc != "" {
+
+						auxDoc := strings.ToUpper(fn.Doc.Text())
+						auxDoc = strings.Trim(auxDoc, " ")
+						auxDoc = strings.TrimSuffix(auxDoc, "\n")
+
+						if strings.Contains(auxDoc, "GROUP:") {
+
+							idx := strings.Index(auxDoc, "GROUP:")
+							auxDoc = auxDoc[idx+6:]
+
+							docGroup := strings.Split(auxDoc, ",")
+
+							for _, fname := range docGroup {
+
+								if fname == *flagGroupFunc {
+									taskFunctions = append(taskFunctions, fn.Name.String())
+									break
+								}
+							}
+
+						}
+
+					} else if len(targetFuncList) > 0 {
 
 						for _, v := range targetFuncList {
 							if v == strings.ToUpper(fn.Name.String()) {

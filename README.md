@@ -60,8 +60,40 @@ func TaskA() {
 }
 ```
 
+###### Grouped
 
+```go
+package example
 
+import (
+	"time"
+)
+
+// GROUP:DEV,PROD
+func TaskA() {
+
+	time.Sleep(1 * time.Second)
+
+}
+
+// GROUP:DEV
+func TaskB() {
+
+	time.Sleep(1 * time.Second)
+
+}
+
+// GROUP:PROD
+func TaskC() {
+
+	time.Sleep(1 * time.Second)
+
+}
+```
+
+```bash
+go-task -f file.go -g dev
+```
 
 ## Examples
 

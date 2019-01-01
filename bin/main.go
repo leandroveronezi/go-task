@@ -83,13 +83,19 @@ func processFlags() bool {
 		return false
 	}
 
+	*flagGroupFunc = strings.ToUpper(strings.Trim(*flagGroupFunc, " "))
+
+	if *flagGroupFunc != "" {
+		return true
+	}
+
 	if *flagTargetFunc == "" {
 		return true
 	}
 
-	temTarg := strings.Split(*flagTargetFunc, ",")
+	temTarget := strings.Split(*flagTargetFunc, ",")
 
-	for _, fname := range temTarg {
+	for _, fname := range temTarget {
 		targetFuncList = append(targetFuncList, strings.ToUpper(fname))
 	}
 
