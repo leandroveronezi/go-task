@@ -54,9 +54,7 @@ import (
 )
 
 func TaskA() {
-
 	time.Sleep(1 * time.Second)
-
 }
 ```
 
@@ -71,23 +69,17 @@ import (
 
 // GROUP:DEV,PROD
 func TaskA() {
-
 	time.Sleep(1 * time.Second)
-
 }
 
 // GROUP:DEV
 func TaskB() {
-
 	time.Sleep(1 * time.Second)
-
 }
 
 // GROUP:PROD
 func TaskC() {
-
 	time.Sleep(1 * time.Second)
-
 }
 ```
 
