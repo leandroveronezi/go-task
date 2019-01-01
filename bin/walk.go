@@ -1,7 +1,6 @@
 package bin
 
 import (
-	"fmt"
 	"go/ast"
 	"go/token"
 	"os"
@@ -30,7 +29,7 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 			if ok {
 
 				if fn.Name.String() == "main" {
-					fmt.Println("Function main is not allowed")
+					printError("Function main is not allowed")
 					os.Exit(1)
 				}
 
@@ -53,7 +52,7 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 					if fn.Type.Params != nil {
 
 						if len(fn.Type.Params.List) > 0 {
-							fmt.Println("Params not allowed in exported functions")
+							printError("Params not allowed in exported functions")
 							os.Exit(1)
 						}
 
@@ -62,7 +61,7 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 					if fn.Type.Results != nil {
 
 						if len(fn.Type.Results.List) > 1 {
-							fmt.Println("Only one result in exported functions")
+							printError("Only one result in exported functions")
 							os.Exit(1)
 						}
 
@@ -70,7 +69,7 @@ func (v *FuncVisitor) Visit(node ast.Node) (w ast.Visitor) {
 						if ok {
 
 							if res.Name != "error" && res.Name != "bool" {
-								fmt.Println("Only error and bollean result in exported functions")
+								printError("Only error and boolean result in exported functions")
 								os.Exit(1)
 							}
 

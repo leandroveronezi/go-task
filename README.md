@@ -31,10 +31,11 @@ go-task -f file.go
     -f      File
     -silent Silent mode
     -k      Keep generated file
-    -w      View generated source
+    -w      View generated source 
     -s      Sort orders of functions by name before run
     -c      Skip errors and continue
     -t      Target functions
+    -g      Run function by group
 ```
 
 ###### Simple File

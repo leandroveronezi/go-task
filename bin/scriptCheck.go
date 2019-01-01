@@ -2,7 +2,13 @@ package bin
 
 import (
 	"go/ast"
+	"os"
 )
+
+func fileExists(FileName string) bool {
+	file, err := os.Stat(FileName)
+	return (err == nil) && !file.IsDir()
+}
 
 func expToStr(Expr ast.Expr) string {
 

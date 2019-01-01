@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"github.com/leandroveronezi/go-terminal"
 	"go/ast"
 	"go/parser"
 	"go/printer"
@@ -19,82 +20,23 @@ import (
 // go-task
 func Main() {
 
-	flagFile := flag.String("f", "", "File")
-	silent := flag.Bool("silent", false, "Silent mode")
-	keepFile := flag.Bool("k", false, "Keep generated file")
-	viewGenSource := flag.Bool("w", false, "View generated source")
-	sortFunctions := flag.Bool("s", false, "Sort orders of functions by name before run")
-	continueOnErrors := flag.Bool("c", false, "Skip errors and continue")
-	targetFunc := flag.String("t", "", "Target functions")
+	flagFileName = flag.String("f", "", "File")
+	flagSilent = flag.Bool("silent", false, "Silent mode")
+	flagKeepFile = flag.Bool("k", false, "Keep generated file")
+	flagViewGenSource = flag.Bool("w", false, "View generated source")
+	flagSortFunctions = flag.Bool("s", false, "Sort orders of functions by name before run")
+	flagContinueOnErrors = flag.Bool("c", false, "Skip errors and continue")
+	flagTargetFunc = flag.String("t", "", "Target functions")
+	flagGroupFunc = flag.String("g", "", "Run function by group")
 
 	flag.Parse()
 
-	if len(os.Args) <= 1 {
-		fmt.Println("File required")
+	if !processFlags() {
 		return
 	}
 
-	if *flagFile == "" {
-		fmt.Println("File required")
-		return
-	}
-
-	if *targetFunc != "" {
-
-		temTarg := strings.Split(*targetFunc, ",")
-
-		for _, fname := range temTarg {
-			targetFuncList = append(targetFuncList, strings.ToUpper(fname))
-		}
-
-	}
-
-	fset := token.NewFileSet() // positions are relative to fset
-	node, err := parser.ParseFile(fset, *flagFile, nil, parser.ParseComments)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	ast.Walk(new(FuncVisitor), node)
-
-	if *sortFunctions {
-		sort.Strings(taskFunctions)
-	}
-
-	var buf bytes.Buffer
-	printer.Fprint(&buf, fset, node)
-
-	fmt.Fprintln(&buf, "//CODE AUTO GENERATED")
-
-	fmt.Fprintln(&buf, "func main(){")
-
-	vmode := "false"
-	if *silent {
-		vmode = "true"
-	}
-
-	cOnError := "false"
-	if *continueOnErrors {
-		cOnError = "true"
-	}
-
-	fmt.Fprintln(&buf, "	var taskFunctions = map[int]goTaskScript.TaskFunction{")
-
-	for idx, name := range taskFunctions {
-
-		fmt.Fprintln(&buf, "		"+strconv.Itoa(idx)+" : goTaskScript.TaskFunction{Name:"+strconv.Quote(name)+",Fun:"+name+"},")
-
-	}
-
-	fmt.Fprintln(&buf, "	}")
-	fmt.Fprintln(&buf, "	goTaskScript.CallFunctions(taskFunctions,"+vmode+","+cOnError+")")
-	fmt.Fprintln(&buf, "}")
-
-	s := buf.String()
-
-	if *viewGenSource {
-		fmt.Println(s)
+	if err := createAstFile(); err != nil {
+		printError(err)
 		return
 	}
 
@@ -111,42 +53,129 @@ func Main() {
 
 			}
 
-			fmt.Println("Function " + tar + " not found")
+			printError("Function " + tar + " not found")
 
 		}
 
 		os.Exit(1)
 	}
 
-	dir, _ := filepath.Split(*flagFile)
+	if *flagSortFunctions {
+		sort.Strings(taskFunctions)
+	}
 
-	if err != nil {
-		fmt.Println(err)
+	if err := generateFileAndRun(); err != nil {
+		printError(err)
 		return
 	}
 
-	tmpFile, err := ioutil.TempFile(dir, "gotask.*.go")
+}
+
+func processFlags() bool {
+
+	if *flagFileName == "" {
+		printError("File required")
+		return false
+	}
+
+	if !fileExists(*flagFileName) {
+		printError("File " + *flagFileName + " not exist")
+		return false
+	}
+
+	if *flagTargetFunc == "" {
+		return true
+	}
+
+	temTarg := strings.Split(*flagTargetFunc, ",")
+
+	for _, fname := range temTarg {
+		targetFuncList = append(targetFuncList, strings.ToUpper(fname))
+	}
+
+	return true
+
+}
+
+func createAstFile() error {
+
+	var err error
+
+	fset = token.NewFileSet() // positions are relative to fset
+	nodeFile, err = parser.ParseFile(fset, *flagFileName, nil, parser.ParseComments)
+
 	if err != nil {
-		panic(err)
+		return err
 	}
 
-	if !*keepFile {
-		defer os.Remove(tmpFile.Name())
+	ast.Walk(new(FuncVisitor), nodeFile)
+
+	return nil
+
+}
+
+func generateFileAndRun() error {
+
+	vmode := "false"
+	if *flagSilent {
+		vmode = "true"
 	}
 
-	_, err = fmt.Fprint(tmpFile, s)
+	cOnError := "false"
+	if *flagContinueOnErrors {
+		cOnError = "true"
+	}
+
+	var buf bytes.Buffer
+	printer.Fprint(&buf, fset, nodeFile)
+
+	fmt.Fprintln(&buf, "//CODE AUTO GENERATED")
+	fmt.Fprintln(&buf, "func main(){")
+	fmt.Fprintln(&buf, "\t var taskFunctions = map[int]goTaskScript.TaskFunction{")
+
+	for idx, name := range taskFunctions {
+		fmt.Fprintln(&buf, "\t\t "+strconv.Itoa(idx)+" : goTaskScript.TaskFunction{Name:"+strconv.Quote(name)+",Fun:"+name+"},")
+	}
+
+	fmt.Fprintln(&buf, "\t }")
+	fmt.Fprintln(&buf, "\t goTaskScript.CallFunctions(taskFunctions,"+vmode+","+cOnError+")")
+	fmt.Fprintln(&buf, "}")
+
+	s := buf.String()
+
+	if *flagViewGenSource {
+		fmt.Println(s)
+		return nil
+	}
+
+	dir, _ := filepath.Split(*flagFileName)
+
+	tempFile, err := ioutil.TempFile(dir, "gotask.*.go")
 
 	if err != nil {
-		panic(err)
+		return err
 	}
 
-	tmpFile.Close()
+	if !*flagKeepFile {
+		defer os.Remove(tempFile.Name())
+	}
 
-	err = goRunFile(tmpFile.Name())
+	_, err = fmt.Fprint(tempFile, s)
 
 	if err != nil {
-		fmt.Println(err)
-		return
+		return err
 	}
+
+	tempFile.Close()
+
+	return goRunFile(tempFile.Name())
+
+}
+
+func printError(Err interface{}) {
+
+	goTerminal.ColorRGBForeground(229, 115, 115)
+	fmt.Println(Err)
+	goTerminal.SetSGR(goTerminal.Reset)
 
 }
