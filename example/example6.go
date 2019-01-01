@@ -5,7 +5,7 @@ import (
 )
 
 // TaskO - Function example
-// GROUP:DEV,PROD
+// group:dev,prod
 func TaskO() {
 
 	time.Sleep(1 * time.Second)
@@ -13,7 +13,7 @@ func TaskO() {
 }
 
 // TaskP - Function example
-// GROUP:DEV
+// group:dev
 func TaskP() {
 
 	time.Sleep(1 * time.Second)
@@ -21,7 +21,7 @@ func TaskP() {
 }
 
 // TaskQ - Function example
-// GROUP:PROD
+// group:prod
 func TaskQ() {
 
 	time.Sleep(1 * time.Second)

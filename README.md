@@ -67,17 +67,17 @@ import (
 	"time"
 )
 
-// GROUP:DEV,PROD
+// group:dev,prod
 func TaskA() {
 	time.Sleep(1 * time.Second)
 }
 
-// GROUP:DEV
+// group:dev
 func TaskB() {
 	time.Sleep(1 * time.Second)
 }
 
-// GROUP:PROD
+// group:prod
 func TaskC() {
 	time.Sleep(1 * time.Second)
 }
