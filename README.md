@@ -4,7 +4,7 @@
 [![GoDoc](https://godoc.org/github.com/leandroveronezi/go-task?status.png)](https://godoc.org/github.com/leandroveronezi/go-task)
 ![MIT Licensed](https://img.shields.io/github/license/leandroveronezi/go-task.svg)
 ![](https://img.shields.io/github/repo-size/leandroveronezi/go-task.svg)
-[![](https://img.shields.io/badge/Need-go--terminal-blue.svg)](https://github.com/leandroveronezi/go-terminal)
+[![](https://img.shields.io/badge/Require-go--terminal-blue.svg)](https://github.com/leandroveronezi/go-terminal)
 
 Golang Task Runner is a very simple library that allows you to write simple "task" scripts in Go and run.
 
