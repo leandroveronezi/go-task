@@ -6,7 +6,7 @@
 ![](https://img.shields.io/github/repo-size/leandroveronezi/go-task.svg)
 [![](https://img.shields.io/badge/Require-go--terminal-blue.svg)](https://github.com/leandroveronezi/go-terminal)
 
-Golang Task Runner is a very simple library that allows you to write simple "task" scripts in Go and run.
+Go-Task is a very simple library that allows you to write simple "task" scripts in Go and run.
 
 ## First, we need $GOPATH/bin
 
