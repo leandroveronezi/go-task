@@ -5,7 +5,7 @@
 ![MIT Licensed](https://img.shields.io/github/license/leandroveronezi/go-task.svg)
 ![](https://img.shields.io/github/repo-size/leandroveronezi/go-task.svg)
 [![](https://img.shields.io/badge/Require-go--terminal-blue.svg)](https://github.com/leandroveronezi/go-terminal)
-[![](https://img.shields.io/badge/Require-go-1.11-blue.svg)](http://golang.com)
+[![](https://img.shields.io/badge/Require-go-1-11-blue.svg)](http://golang.com)
 
 
 Go-Task is a very simple library that allows you to write simple "task" scripts in Go and run.
